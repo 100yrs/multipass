@@ -68,7 +68,7 @@ class StandardMultiPassTest < Test::Unit::TestCase
     @date   = Time.now + 1234
     @input  = {:expires => @date, :email => 'ricky@bobby.com'}
     @output = @input.merge(:expires => @input[:expires].to_s)
-    @key    = EzCrypto::Key.with_password('example', 'abc')
+    @key    = EzCrypto2::Key.with_password('example', 'abc')
     @mp     = MultiPass.new('example', 'abc', :url_safe => false)
   end
 end
@@ -85,7 +85,7 @@ class UrlSafeMultiPassTest < Test::Unit::TestCase
     @date   = Time.now + 1234
     @input  = {:expires => @date, :email => 'ricky@bobby.com'}
     @output = @input.merge(:expires => @input[:expires].to_s)
-    @key    = EzCrypto::Key.with_password('example', 'abc')
+    @key    = EzCrypto2::Key.with_password('example', 'abc')
     @mp     = MultiPass.new('example', 'abc', :url_safe => true)
   end
 end
@@ -94,7 +94,7 @@ class ErrorTest < Test::Unit::TestCase
   include MultiPassTestHelper
 
   def setup
-    @key = EzCrypto::Key.with_password('example', 'abc')
+    @key = EzCrypto2::Key.with_password('example', 'abc')
     @mp  = MultiPass.new('example', 'abc')
   end
 

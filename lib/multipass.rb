@@ -1,5 +1,5 @@
 require 'time'
-require 'ezcrypto'
+require 'ezcrypto2'
 require 'base64'
 
 class MultiPass
@@ -46,7 +46,7 @@ class MultiPass
   #   :url_safe => true
   def initialize(site_key, api_key, options = {})
     @url_safe   = !options.key?(:url_safe) || options[:url_safe]
-    @crypto_key = EzCrypto::Key.with_password(site_key, api_key)
+    @crypto_key = EzCrypto2::Key.with_password(site_key, api_key)
   end
 
   def url_safe?
