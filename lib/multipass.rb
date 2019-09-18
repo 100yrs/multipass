@@ -56,7 +56,7 @@ class MultiPass
   # Encrypts the given hash into a multipass string.
   def encode(options = {})
     options[:expires] = case options[:expires]
-      when Fixnum               then Time.at(options[:expires]).to_s
+      when Integer              then Time.at(options[:expires]).to_s
       when Time, DateTime, Date then options[:expires].to_s
       else options[:expires].to_s
     end
@@ -110,7 +110,7 @@ class MultiPass
   # http://rishida.net/tools/conversion/
   def unencode_javascript_unicode_escape(str)
     if str.respond_to?(:gsub!)
-      str.gsub!(/\\u([0-9a-fA-F]{4})/) do |s| 
+      str.gsub!(/\\u([0-9a-fA-F]{4})/) do |s|
         int = $1.to_i(16)
         if int.zero? && s != "0000"
           s
